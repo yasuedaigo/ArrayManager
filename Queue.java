@@ -5,13 +5,13 @@ import java.util.Comparator;
 public class Queue {
 
     private final int TopIndex = 0;
-    private ArrayList<listElement> list;
+    private ArrayList<ListElement> list;
 
-    private class listElement {
+    private class ListElement {
         private String text;
         private int priority;
 
-        private listElement(String inputText, int inputPriority) {
+        private ListElement(String inputText, int inputPriority) {
             this.text = inputText;
             this.priority = inputPriority;
         }
@@ -28,19 +28,19 @@ public class Queue {
     }
 
     public void push(String inputText, int inputPriority) {
-        listElement element = new listElement(inputText, inputPriority);
+        ListElement element = new ListElement(inputText, inputPriority);
         list.add(element);
     }
 
     public String pop() {
-        Collections.sort(list, new Comparator<listElement>() {
+        Collections.sort(list, new Comparator<ListElement>() {
             @Override
-            public int compare(listElement elementFirst, listElement elementSecond) {
+            public int compare(ListElement elementFirst, ListElement elementSecond) {
                 return Integer.compare(elementSecond.getPriority(), elementFirst.getPriority());
 
             }
         });
-        listElement top = list.get(TopIndex);
+        ListElement top = list.get(TopIndex);
         list.remove(TopIndex);
         return top.getText();
     }
